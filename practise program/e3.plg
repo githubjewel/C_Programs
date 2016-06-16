@@ -1,0 +1,27 @@
+<html>
+<body>
+<pre>
+<h1>Build Log</h1>
+<h3>
+--------------------Configuration: e3 - Win32 Debug--------------------
+</h3>
+<h3>Command Lines</h3>
+Creating temporary file "C:\Users\MD2A0B~1.ROK\AppData\Local\Temp\RSPA1D7.tmp" with contents
+[
+/nologo /MLd /W3 /Gm /GX /ZI /Od /D "WIN32" /D "_DEBUG" /D "_CONSOLE" /D "_MBCS" /Fp"Debug/e3.pch" /YX /Fo"Debug/" /Fd"Debug/" /FD /GZ /c 
+"C:\Users\MD.ROKIBUL ISLAM\Desktop\C PROGRAMS\practise program\e3.cpp"
+]
+Creating command line "cl.exe @C:\Users\MD2A0B~1.ROK\AppData\Local\Temp\RSPA1D7.tmp" 
+<h3>Output Window</h3>
+Compiling...
+e3.cpp
+C:\Users\MD.ROKIBUL ISLAM\Desktop\C PROGRAMS\practise program\e3.cpp(5) : error C2632: 'long' followed by 'long' is illegal
+Error executing cl.exe.
+
+
+
+<h3>Results</h3>
+e3.obj - 1 error(s), 0 warning(s)
+</pre>
+</body>
+</html>

@@ -1,0 +1,104 @@
+#include<stdio.h>
+#include<string.h>
+#include<vector>
+
+using namespace std;
+
+int node,edge,w=0,g=2,b=3,color[101],d[101],f[101],time=0,par[101],cycle=0;
+vector <int > V[101],topsort;
+
+void DFS_VISIT(int u) {
+    color[u]=g;
+    time++;
+    d[u]=time;
+
+    int i,j,k,l;
+    for(i=0;i<V[u].size();i++) {
+        int v=V[u][i];
+        if(color[v]==w) {
+            //printf("%d\n",u);
+            par[v]=u;
+            DFS_VISIT(v);
+        }
+        else if(color[v]==g) cycle=1;
+    }
+    topsort.push_back(u);
+    color[u]=b;
+    time++;
+    f[u]=time;
+}
+
+void DFS() {
+    int i,j,k,l;
+    time=0;
+    for(i=1;i<=node;i++) {
+        color[i]=w;
+    }
+
+    for(i=1;i<=node;i++) {
+        if(color[i]==w) {
+           DFS_VISIT(i);
+        }
+    }
+}
+
+
+int main() {
+    int n,m,i,j,k,u,v;
+
+
+    while(true) {
+        printf("node: ");
+        scanf("%d",&node);
+        printf("edge: ");
+        scanf("%d",&edge);
+
+        for(i=0;i<edge;i++) {
+            scanf("%d %d",&u,&v);
+            V[u].push_back(v);
+           // V[v].push_back(u);
+        }
+
+        for(i=1;i<=node;i++) par[i]=i;
+
+        printf("1.travarse\n2.topsort\n");
+        scanf("%d",&n);
+
+        if(n==1) {
+            printf("Source: ");
+            int source;
+            scanf("%d",&source);
+            DFS_VISIT(source);
+
+            for(i=1;i<=node;i++) {
+                if(color[i]==w) {
+                    DFS_VISIT(i);
+                }
+            }
+
+            for(i = 1 ; i <= node ; i++)
+            {
+                printf("%d -> %d\nDiscover time : %d\nFinish time %d\n",i , par[i] , d[i],f[i]) ;
+            }
+        }
+
+        else if(n==2) {
+	topsort.clear();
+            DFS();
+
+            if(cycle==0) {
+                for(i=0;i<topsort.size();i++) {
+                    printf("%d ",topsort[i]);
+                }
+                printf("\n");
+            }
+
+
+            else printf("Cycle occured\n");
+        }
+
+
+        printf("\n");
+    }
+
+}
